@@ -1,0 +1,163 @@
+<html>
+<head>
+<style>
+
+#con{
+    background-color:Violet;
+    margin-left:150px;
+    margin-right:200px;
+    border-radius:5px;
+	padding:1px;
+}
+button{
+    background-color:purple;
+    border-radius:5px;
+	padding:1px;
+	color:green;
+}
+p{
+    background-color:pink;
+	margin:5px;
+	padding:10px;
+	border-radius: 5px;
+    color:green;
+}
+#name{
+    margin:5px;
+	padding:2px;
+	border-radius:5px;
+}
+#sname{
+    margin:5px;
+	padding:2px;
+	border-radius:5px;
+}
+#age{
+    margin:5px;
+	padding:2px;
+	border-radius:5px;
+}
+</style>
+</head>
+<body id="main" bgcolor="LightGrey">
+
+<h1> <center>STUDENT FORM</h1> </cxenter>  
+    
+Name: <input type = "text" id = "name" value = "" > <br></br>
+Surname: <input type = "text" id = "sname" value = "" ><br></br>
+Age: <input type = "text" id = "age" value = "" ><br></br>
+
+<button onclick = " myFunction()"> save</button> 
+<button onclick = "myDisplay()"> display</button> 
+<button onclick = "myDelete()"> delete</button> 
+
+<div id="con">
+</div>
+<script>
+
+var student={name,sname,age};
+var myArray=[];
+
+function myFunction(){
+
+		student.name = document.getElementById("name").value;
+		student.sname = document.getElementById("sname").value;
+		student.age = document.getElementById("age").value;
+		
+		if(student.name=="")
+		{
+			alert("The name must not be empty");	
+		}
+		else if(isNaN(student.name.toString())==false)
+		{
+			alert("your name must be alphabets");
+		}
+		else if(student.sname=="")
+		{
+		   alert("The surname must not be empty");
+		}
+		else if(isNaN(student.sname.toString())==false)
+		{
+			alert("your surname must be alphabets");
+		}
+		else if(student.age=="")
+		{
+			alert("The age must not be empty");
+		}
+		else if(isNaN(student.age)!=false)
+		{
+			alert("The age must be a number");
+		}
+		else
+		{
+		    add();
+		} 
+	}
+
+function add(){
+     
+   student.name = document.getElementById("name").value;
+   student.sname = document.getElementById("sname").value;
+   student.age = document.getElementById("age").value;
+
+   var list=student.name+" "+student.sname+" "+student.age;
+
+   myArray.push(list);
+   student.name = document.getElementById("name").value="";
+   student.sname = document.getElementById("sname").value="";
+   student.age = document.getElementById("age").value="";
+  }
+
+function myDisplay(){
+
+ for (var i in myArray){
+    var ptag  = document.createElement("p");
+	ptag.setAttribute("id","head");
+	
+    ptag.innerHTML = myArray[i];
+    var con = document.getElementById("con");
+	con.appendChild(ptag);
+	 
+	 var deleteB = document.createElement("input");
+	 
+	 deleteB.setAttribute("type","button");
+	 deleteB.setAttribute("value","deleteB");
+	 deleteB.setAttribute("onclick","del()");
+	 ptag.appendChild(deleteB);
+	 
+	 var updateButton = document.createElement("input");
+	 
+	 updateButton.setAttribute("type","button");
+	 updateButton.setAttribute("value","UpDate");
+	 updateButton.setAttribute("onclick","UpDate()");
+	 ptag.appendChild(updateButton);
+  }  
+}
+function myDelete(){
+
+    var contain = document.getElementById("con");
+    contain.remove(); 
+	
+	var boo=document.createElement("div");
+	boo.setAttribute("id","con");
+	
+	var main=document.getElementById("main");
+	
+	
+    main.appendChild(boo); 
+}
+myDisplay();
+
+function del(){
+
+	var display = document.getElementById("head");
+	display.remove();
+}
+function upDate(){
+
+	var display2 = document.getElementById("title");
+	
+}
+</script>
+</body>
+</html>
